@@ -3,6 +3,13 @@ Prereq: expo SDK
 
 
 To run:
+
+create env.js file:
+
+```
+export const client_id = "<access key goes here>";
+```
+
 `yarn`
 `expo start`
 
