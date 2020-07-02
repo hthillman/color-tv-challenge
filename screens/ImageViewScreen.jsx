@@ -2,12 +2,12 @@ import * as React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { connect } from "react-redux";
 
-function ImageView({ photos }) {
+function ImageView({ currentPhoto }) {
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: photos.payload
+          uri: currentPhoto.payload
         }}
         style={styles.fullScreenImage}
       />
@@ -16,8 +16,8 @@ function ImageView({ photos }) {
 }
 
 const mapStateToProps = state => {
-  const { photos } = state;
-  return { photos };
+  const { currentPhoto } = state;
+  return { currentPhoto };
 };
 
 const ImageViewScreen = connect(mapStateToProps)(ImageView);

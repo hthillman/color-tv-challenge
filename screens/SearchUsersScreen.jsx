@@ -15,7 +15,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { addUser } from "../redux/actions";
 import { client_id } from "../env";
 
-function SearchUsers({ navigation, users, addUser }) {
+function SearchUsers({ navigation, addUser }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [userResults, setUserResults] = useState([]);
 

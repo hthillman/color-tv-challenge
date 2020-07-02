@@ -10,17 +10,17 @@ import {
 import { connect } from "react-redux";
 import { addPhoto } from "../redux/actions";
 
-function UserProfile({ navigation, users, addPhoto }) {
+function UserProfile({ navigation, currentUser, addPhoto }) {
   function storeSelectedPhoto(photo) {
     addPhoto(photo);
   }
 
-  function renderProfileImage(users) {
-    if (users && users.profile_image) {
+  function renderProfileImage(currentUser) {
+    if (currentUser && currentUser.profile_image) {
       return (
         <Image
           source={{
-            uri: users.profile_image.small
+            uri: currentUser.profile_image.small
           }}
           style={{
             width: 100,
@@ -34,17 +34,17 @@ function UserProfile({ navigation, users, addPhoto }) {
     }
   }
 
-  function renderProfileName(users) {
-    if (users && users.name) {
-      return <Text style={styles.userNameText}>{users.name}</Text>;
+  function renderProfileName(currentUser) {
+    if (currentUser && currentUser.name) {
+      return <Text style={styles.userNameText}>{currentUser.name}</Text>;
     } else {
       return <Text>User has not entered a name</Text>;
     }
   }
 
-  function renderProfileBio(users) {
-    if (users && users.name) {
-      return <Text style={styles.userBioText}>{users.bio}</Text>;
+  function renderProfileBio(currentUser) {
+    if (currentUser && currentUser.name) {
+      return <Text style={styles.userBioText}>{currentUser.bio}</Text>;
     } else {
       return <Text>Bio empty</Text>;
     }
@@ -53,17 +53,17 @@ function UserProfile({ navigation, users, addPhoto }) {
   return (
     <View style={styles.container}>
       <View style={styles.spacer} />
-      {renderProfileImage(users)}
+      {renderProfileImage(currentUser)}
       <View style={styles.spacer} />
 
-      {renderProfileName(users)}
+      {renderProfileName(currentUser)}
       <View style={styles.spacer} />
 
-      {renderProfileBio(users)}
-      {users.photos && users.photos.length > 0 && (
+      {renderProfileBio(currentUser)}
+      {currentUser.photos && currentUser.photos.length > 0 && (
         <FlatList
           style={styles.photos}
-          data={Object.values(users.photos)}
+          data={Object.values(currentUser.photos)}
           numColumns={3}
           renderItem={({ item }) => {
             return (
@@ -99,8 +99,8 @@ function UserProfile({ navigation, users, addPhoto }) {
 }
 
 const mapStateToProps = state => {
-  const { users } = state;
-  return { users };
+  const { currentUser } = state;
+  return { currentUser };
 };
 
 const UserProfileScreen = connect(

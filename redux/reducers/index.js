@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 
 const initialState = {};
 
-function users(state = initialState, action) {
+function currentUser(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -15,7 +15,7 @@ function users(state = initialState, action) {
   }
 }
 
-function photos(state = initialState, action) {
+function currentPhoto(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case ADD_PHOTO: {
@@ -26,4 +26,4 @@ function photos(state = initialState, action) {
   }
 }
 
-export default combineReducers({ users, photos });
+export default combineReducers({ currentUser, currentPhoto });
