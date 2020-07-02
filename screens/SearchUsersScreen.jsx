@@ -13,6 +13,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { addUser } from "../redux/actions";
+import {client_id} from '../env';
 
 function SearchUsers({ navigation, users, addUser }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +21,7 @@ function SearchUsers({ navigation, users, addUser }) {
 
   async function searchUsers(searchText) {
     let ROOT = `https://api.unsplash.com/search/users/`;
-    let KEY = `?client_id=aa2f3c3be8125f1fc86e3007153420c4e446c19b7b0c6d80a6257b281c9a0dc5`; // would 
+    let KEY = `?client_id=${client_id}`;
     let PERPAGE = `&per_page=20`;
 
     const url = `${ROOT}${KEY}${PERPAGE}&page=1&query=${searchText}`;
