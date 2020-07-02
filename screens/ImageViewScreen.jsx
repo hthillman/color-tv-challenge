@@ -1,10 +1,8 @@
 import * as React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import { connect } from "react-redux";
-import { addPhoto } from "../redux/actions";
 
-function ImageView({ navigation, photos }) {
-
+function ImageView({ photos }) {
   return (
     <View style={styles.container}>
       <Image
@@ -42,9 +40,9 @@ const styles = StyleSheet.create({
     width: "80%"
   },
   fullScreenImage: {
-    flex:1,
-    width:"100%",
-    height:"100%",
+    flex: 1,
+    width: "100%",
+    height: "100%",
 
     resizeMode: "contain"
   }

@@ -2,16 +2,15 @@ export const ADD_USER = "ADD_USER";
 export const ADD_PHOTO = "ADD_PHOTO";
 
 export const addUser = user => {
-    return({
+  return {
     type: ADD_USER,
-    payload: { ...user } 
-  });
-}
+    payload: { ...user }
+  };
+};
 
 export const addPhoto = photo => {
-    return({
+  return {
     type: ADD_PHOTO,
-    payload: photo 
-  });
-}
-  
+    payload: photo
+  };
+};

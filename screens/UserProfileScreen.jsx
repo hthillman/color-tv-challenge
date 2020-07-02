@@ -15,7 +15,7 @@ function UserProfile({ navigation, users, addPhoto }) {
     addPhoto(photo);
   }
 
-  function maybeRenderProfileImage(users) {
+  function renderProfileImage(users) {
     if (users && users.profile_image) {
       return (
         <Image
@@ -25,48 +25,44 @@ function UserProfile({ navigation, users, addPhoto }) {
           style={{
             width: 100,
             height: 100,
-            borderRadius:8
+            borderRadius: 8
           }}
         />
       );
-    }else{
-      return <View/>
+    } else {
+      return <View />;
     }
   }
 
-  function maybeRenderProfileName(users) {
+  function renderProfileName(users) {
     if (users && users.name) {
-      return (
-        <Text style={styles.userNameText}>{users.name}</Text>
-      );
-    }else{
-      return <Text>User has not entered a name</Text>
+      return <Text style={styles.userNameText}>{users.name}</Text>;
+    } else {
+      return <Text>User has not entered a name</Text>;
     }
   }
 
-  function maybeRenderProfileBio(users) {
+  function renderProfileBio(users) {
     if (users && users.name) {
-      return (
-        <Text style={styles.userBioText}>{users.bio}</Text>
-      );
-    }else{
-      return <Text>Bio empty</Text>
+      return <Text style={styles.userBioText}>{users.bio}</Text>;
+    } else {
+      return <Text>Bio empty</Text>;
     }
   }
 
   return (
     <View style={styles.container}>
-      <View style={styles.spacer}/>
-      {maybeRenderProfileImage(users)}
-      <View style={styles.spacer}/>
+      <View style={styles.spacer} />
+      {renderProfileImage(users)}
+      <View style={styles.spacer} />
 
-      {maybeRenderProfileName(users)}
-      <View style={styles.spacer}/>
+      {renderProfileName(users)}
+      <View style={styles.spacer} />
 
-      {maybeRenderProfileBio(users)}
+      {renderProfileBio(users)}
       {users.photos && users.photos.length > 0 && (
         <FlatList
-        style={styles.photos}
+          style={styles.photos}
           data={Object.values(users.photos)}
           numColumns={3}
           renderItem={({ item }) => {
@@ -85,7 +81,7 @@ function UserProfile({ navigation, users, addPhoto }) {
                   style={{
                     width: 100,
                     height: 100,
-                    borderRadius:8
+                    borderRadius: 8
                   }}
                 />
               </TouchableOpacity>
@@ -107,7 +103,10 @@ const mapStateToProps = state => {
   return { users };
 };
 
-const UserProfileScreen = connect(mapStateToProps, {addPhoto})(UserProfile);
+const UserProfileScreen = connect(
+  mapStateToProps,
+  { addPhoto }
+)(UserProfile);
 
 export default UserProfileScreen;
 
@@ -129,26 +128,25 @@ const styles = StyleSheet.create({
   userItemDisplay: {
     width: 200,
     marginVertical: 20,
-    alignItems:"center",
-    justifyContent:"center"
+    alignItems: "center",
+    justifyContent: "center"
   },
 
-  photos:{
-    flex:1,
+  photos: {
+    flex: 1
   },
-  spacer:{
-    width:"100%",
-    flex:0.02
+  spacer: {
+    width: "100%",
+    flex: 0.02
   },
-  userNameText:{
-    fontWeight:"600",
-    width:"90%",
-    textAlign:"center"
+  userNameText: {
+    fontWeight: "600",
+    width: "90%",
+    textAlign: "center"
   },
-  userBioText:{
-    fontWeight:"400",
-    width:"90%",
-    textAlign:"center"
+  userBioText: {
+    fontWeight: "400",
+    width: "90%",
+    textAlign: "center"
   }
-
 });

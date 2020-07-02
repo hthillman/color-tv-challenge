@@ -13,7 +13,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { addUser } from "../redux/actions";
-import {client_id} from '../env';
+import { client_id } from "../env";
 
 function SearchUsers({ navigation, users, addUser }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,7 +43,6 @@ function SearchUsers({ navigation, users, addUser }) {
           onChangeText={input => setSearchTerm(input)}
           placeholder="Search Name"
           placeholderTextColor="#77787b"
-          
         />
         <View style={{ width: 10 }} />
         <TouchableOpacity
@@ -146,7 +145,7 @@ const styles = StyleSheet.create({
   },
   searchResults: {
     flex: 1,
-    width:"100%"
+    width: "100%"
   },
   separator: {
     marginVertical: 30,
@@ -158,7 +157,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   userItemDisplay: {
-    width: Dimensions.get('window').width / 2,
+    width: Dimensions.get("window").width / 2,
     marginVertical: 20,
     alignItems: "center",
     justifyContent: "center"
